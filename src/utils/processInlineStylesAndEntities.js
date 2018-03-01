@@ -1,8 +1,6 @@
 import template from 'lodash/template';
 import sortBy from 'lodash/sortBy';
-import last from 'lodash/last';
 import clone from 'lodash/clone';
-import indexOf from 'lodash/indexOf'
 
 export default function processInlineStylesAndEntities(inlineTagMap, entityTagMap, entityMap, block) {
   if (!block.inlineStyleRanges && !block.entityRanges) {
@@ -126,7 +124,6 @@ export default function processInlineStylesAndEntities(inlineTagMap, entityTagMa
   sortedEntityRanges.forEach(function(range) {
     let entity = entityMap[range.key];
     let tag = entityTagMap[entity.type];
-
     let compiledTag0 = template(tag[0])(entity.data);
     let compiledTag1 = template(tag[1])(entity.data);
 
